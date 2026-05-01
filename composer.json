@@ -1,0 +1,40 @@
+{
+    "name": "noxlogic/oprf",
+    "description": "Oblivious Pseudorandom Function (OPRF) library for PHP, based on RFC 9497",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joshua Thijssen",
+            "email": "jthijssen@noxlogic.nl"
+        }
+    ],
+    "keywords": ["oprf", "voprf", "rfc9497", "ristretto255", "cryptography", "pseudonym"],
+    "require": {
+        "php": ">=8.2",
+        "ext-sodium": "*",
+        "web-token/jwt-framework": "^4.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.95"
+    },
+    "autoload": {
+        "psr-4": {
+            "Noxlogic\\Oprf\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Noxlogic\\Oprf\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test":   "phpunit",
+        "cs":     "php-cs-fixer check --allow-risky=yes",
+        "cs:fix": "php-cs-fixer fix --allow-risky=yes",
+        "stan":   "phpstan analyse",
+        "ci":     ["@cs", "@stan", "@test"]
+    }
+}
