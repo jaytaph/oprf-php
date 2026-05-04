@@ -1,5 +1,9 @@
 # oprf-php
 
+[![Latest Version](https://img.shields.io/packagist/v/noxlogic/oprf.svg)](https://packagist.org/packages/noxlogic/oprf)
+[![PHP Version](https://img.shields.io/packagist/php-v/noxlogic/oprf.svg)](https://packagist.org/packages/noxlogic/oprf)
+[![License](https://img.shields.io/github/license/noxlogic/oprf-php.svg)](LICENSE)
+
 PHP implementation of the **Oblivious Pseudorandom Function (OPRF)** protocol, base mode, as defined in [RFC 9497](https://www.rfc-editor.org/rfc/rfc9497) using the `ristretto255-SHA-512` suite.
 
 Compatible with [liboprf](https://github.com/stef/liboprf).
