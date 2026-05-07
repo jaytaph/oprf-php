@@ -11,12 +11,20 @@ Compatible with [liboprf](https://github.com/stef/liboprf).
 ## Requirements
 
 - PHP 8.2 or higher
-- `ext-sodium` (libsodium ≥ 1.0.18)
+- libsodium APIs provided by either:
+  - `ext-sodium` (recommended, libsodium >= 1.0.18)
+  - [`paragonie/sodium_compat`](https://github.com/paragonie/sodium_compat)
 
 ## Installation
 
 ```bash
 composer require noxlogic/oprf
+```
+
+If `ext-sodium` is unavailable, install the compatible polyfill:
+
+```bash
+composer require paragonie/sodium_compat
 ```
 
 ## Usage
