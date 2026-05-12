@@ -61,9 +61,7 @@ class OprfClient
             throw new OprfException('Invalid evaluated element received from server.');
         }
 
-        // Unblind: N = r^{-1} * Z  =>  k * HashToGroup(input)
-        $invBlind = $this->group->scalarInvert($blind);
-        $unblinded = $this->group->scalarMult($invBlind, $evaluatedElement);
+        $unblinded = $this->unblind($blind, $evaluatedElement);
 
         // hashInput per RFC 9497 §3.3.1:
         // I2OSP(len(input), 2) || input || I2OSP(len(N), 2) || N || "Finalize"
@@ -74,6 +72,13 @@ class OprfClient
             . 'Finalize';
 
         return hash('sha512', $hashInput, binary: true);
+    }
+
+    /** Unblind: N = r^{-1} * Z  =>  k * HashToGroup(input) */
+    public function unblind(string $blind, string $evaluatedElement): string
+    {
+        $invBlind = $this->group->scalarInvert($blind);
+        return $this->group->scalarMult($invBlind, $evaluatedElement);
     }
 
     /** Encode integer as big-endian byte string of $length bytes (RFC 8017 I2OSP). */
